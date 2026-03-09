@@ -6,7 +6,9 @@ import {
   ListItem, 
   ListItemText, 
   IconButton,
-  Container
+  Container,
+  Typography,
+  Stack
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -29,7 +31,49 @@ function App() {
 
   return (
     <>
-      <h1>Todo List</h1>
+      <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
+        <Typography variant="h4" align="center" gutterBottom>
+          To-Do List
+        </Typography>
+        <Container maxWidth="sm" sx={{ mt: 4 }}>
+          <Stack spacing={2} direction="row" alignItems="center">
+            <TextField
+              label="Add Task"
+              variant="outlined"
+              fullWidth
+              value={newTask}
+              onChange={e => setNewTask(e.target.value)}
+              onKeyPress={e => {
+                if (e.key === 'Enter') addTask();
+              }}
+              sx={{ mb: 2 }}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              endIcon={<AddIcon />}
+              onClick={addTask}
+              sx={{ mb: 2 }}
+            >
+              <AddIcon />
+            </Button>
+          </Stack>
+          <List>
+            {tasks.map((task, index) => (
+              <ListItem
+                key={index}
+                secondaryAction={
+                  <IconButton edge="end" color="error" onClick={() => deleteTask(index)}>
+                    <DeleteIcon />
+                  </IconButton>
+                }
+              >
+                <ListItemText primary={task} />
+              </ListItem>
+            ))}
+          </List>
+        </Container>
+      </Container>  
     </>
   );
 }
