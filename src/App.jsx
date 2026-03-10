@@ -43,7 +43,7 @@ function App() {
               fullWidth
               value={newTask}
               onChange={e => setNewTask(e.target.value)}
-              onKeyPress={e => {
+              onKeyDown={e => {
                 if (e.key === 'Enter') addTask();
               }}
               sx={{ mb: 2 }}
@@ -51,7 +51,6 @@ function App() {
             <Button
               variant="contained"
               color="primary"
-              endIcon={<AddIcon />}
               onClick={addTask}
               sx={{ mb: 2 }}
             >
