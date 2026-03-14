@@ -73,7 +73,7 @@ function App() {
     <>
       <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
         <Typography variant="h4" align="center" gutterBottom>
-          To-Do List
+          Task Reminder
         </Typography>
 
         <Container maxWidth="sm" sx={{ mt: 4 }}>
